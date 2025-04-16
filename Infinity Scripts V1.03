@@ -1,3 +1,5 @@
+local nocliping = false
+
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Frame_2 = Instance.new("Frame")
@@ -144,8 +146,27 @@ Open.MouseButton1Click:Connect(function()
 	Frame.Visible = true
 end)
 
+local nocliping = false
+local plr = game.Players.LocalPlayer
 Noclip.MouseButton1Click:Connect(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/CoolScripts1/noclip/refs/heads/main/Noclip"))()
+	nocliping = not nocliping
+	if nocliping then
+		game["Run Service"].Stepped:Connect(function()
+			if nocliping then
+				for i,v in pairs(plr.Character:GetDescendants()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		end)
+	else
+		for i,v in pairs(plr.Character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v.CanCollide = true
+			end
+		end
+	end
 end)
 
 Fly.MouseButton1Click:Connect(function()
