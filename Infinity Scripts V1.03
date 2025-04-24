@@ -16,6 +16,7 @@ local Open = Instance.new("TextButton")
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(164, 84, 255)
@@ -113,6 +114,7 @@ WalkSpeed.Position = UDim2.new(0.332226574, 0, 0.429280192, 0)
 WalkSpeed.Size = UDim2.new(0, 186, 0, 50)
 WalkSpeed.Font = Enum.Font.Arcade
 WalkSpeed.Text = "Change WalkSpeed"
+WalkSpeed.TextScaled = true
 WalkSpeed.TextColor3 = Color3.fromRGB(0, 0, 0)
 WalkSpeed.TextSize = 29.000
 
@@ -193,7 +195,7 @@ WalkSpeed.Activated:Connect(function(plr)
 end)
 
 Fling.Activated:Connect(function()
-local flingpow = 10000 -- change this to make it more or less powerful
+local flingpow = 8500 -- change this to make it more or less powerful
 
 	game:GetService('RunService').Stepped:connect(function()
 		game.Players.LocalPlayer.Character.Head.CanCollide = false
